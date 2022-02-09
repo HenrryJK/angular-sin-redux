@@ -19,12 +19,14 @@ export class AppComponent {
   contador: number;
   // constructor usando en NGRX //  private store: Store<{contador:number}>
   constructor( private store: Store<AppState>){
-
-      this.store.subscribe(state =>{
-          console.log(state);
-          this.contador = state.contador;
+      // el select nos permite seleccionar el nodo que nos interesa o queramos
+      /*
+      this.store.select('contador').subscribe(contador =>{
+          console.log(contador);
+          // this.contador = state.contador;
       });
-
+      */
+      this.store.select('contador').subscribe(contador => this.contador=contador);
 
     // this.contador = 10;
   }
